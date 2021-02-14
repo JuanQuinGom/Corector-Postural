@@ -7,6 +7,10 @@
 #include <tuple>
 #include <BMI160Gen.h>
 
+#define SENSE_RATE   100
+#define GYRO_RANGE   250
+#define ACCL_RANGE     2
+
 class IndividualSensorManager {
   private:
     BMI160GenClass bmi;
@@ -36,9 +40,18 @@ class IndividualSensorManager {
       bmi.begin(BMI160GenClass::I2C_MODE);
       //bmi.begin(BMI160GenClass::I2C_MODE, Wire, 0x68, 2);
       //bmi.begin(BMI160GenClass::I2C_MODE, Wire, 0x69-turno, 2);
+
+      bmi.setGyroRate(SENSE_RATE);
+      bmi.setAccelerometerRate(SENSE_RATE);
+      
       bmi.setGyroRange(250);
       bmi.setAccelerometerRange(2);
       // bmi.setAccelerometerRange(0X05);
+      bmi.autoCalibrateGyroOffset();
+      //Test 1 callibrate ...
+      bmi.autoCalibrateAccelerometerOffset(X_AXIS, 1);
+      bmi.autoCalibrateAccelerometerOffset(Y_AXIS, 0);
+      bmi.autoCalibrateAccelerometerOffset(Z_AXIS, 0);
     }
     //std::tie
     std::tuple<Vector3<int>, Vector3<int>> read_sensor() {
