@@ -135,8 +135,20 @@ double dt;
 Comparer<decltype(std::declval<IndividualSensorManager>().read_sensor())> comparer(5);
 
 void loop() {
+<<<<<<< HEAD
     
   static unsigned long last_send = 0;
+=======
+    double dt;
+  static unsigned long last_send = 0;
+  
+  if (
+    //digitalRead(CONNECTION_PIN)
+    1
+    ) {
+
+    rate.sleep();
+>>>>>>> main
     // const uint8_t bateria = battery_manager->read();
     // Serial.println(String("bateria: ") + bateria);
     auto ble_send = ble_rate.has_passed();
@@ -166,7 +178,11 @@ void loop() {
       rad_a_pitch = atan2(-accel_vector.x, sqrt(accel_vector.y*accel_vector.y + accel_vector.z*accel_vector.z));
       accl_roll = rad_to_deg(rad_a_roll);
       accl_pitch = rad_to_deg(rad_a_pitch);
+<<<<<<< HEAD
       Serial.println("trasasying");   
+=======
+
+>>>>>>> main
       omega_roll  = convertRawGyro(gyro_vector.x);
       omega_pitch = convertRawGyro(gyro_vector.y);
       omega_yaw   = convertRawGyro(gyro_vector.z);
@@ -175,10 +191,16 @@ void loop() {
       unsigned long cur_mills = micros();
       unsigned long duration = cur_mills - last_mills;
       last_mills = cur_mills;
+<<<<<<< HEAD
       Serial.println(dt);
       dt = duration / 1000000.0; // us->s  
       }while(dt < 0.1);
       
+=======
+      dt = duration / 1000000.0; // us->s  
+      }while(dt < 0.1);
+
+>>>>>>> main
       // Gyro data
       gyro_roll  += omega_roll  * dt; // (ms->s) omega x time = degree
       gyro_pitch += omega_pitch * dt;
@@ -189,7 +211,11 @@ void loop() {
       //comp_pitch[i] = 0.93 * (comp_pitch[i] + omega_pitch[i] * dt) + 0.07 * accl_pitch[i]; 
     
       // Madgwick filter data
+<<<<<<< HEAD
       madgwick.updateIMU2(omega_roll, omega_pitch, omega_yaw, accel_vector.x, accel_vector.y, accel_vector.z,dt);
+=======
+      madgwick.updateIMU2(omega_roll, omega_pitch, omega_yaw, accel_vector.x, accel_vector.y, accel_vector.z, dt);
+>>>>>>> main
       //madgwick.updateIMU(omega_roll, omega_pitch, omega_yaw, accX, accY, accZ);
        madw_roll  = madgwick.getRoll();
        madw_pitch = madgwick.getPitch();
