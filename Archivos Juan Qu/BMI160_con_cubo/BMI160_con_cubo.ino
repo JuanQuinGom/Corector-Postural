@@ -202,11 +202,11 @@ void loop() {
       Serial.print(" , ");
       Serial.println(madw_yaw);
       */
-      Serial.print(madw_roll[i]);
+      Serial.print(int(madw_roll[i]));
       Serial.print(" , ");
-      Serial.print(madw_pitch[i]);
+      Serial.print(int(madw_pitch[i]));
       Serial.print(" , ");
-      Serial.println(madw_yaw[i]);
+      Serial.println(int(madw_yaw[i]));
       
       delay(100);
       i += 1;
