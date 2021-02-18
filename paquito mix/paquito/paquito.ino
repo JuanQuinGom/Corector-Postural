@@ -29,7 +29,7 @@ uint32_t value = 0;
 
 // #define PRINT_LAG
 #define PRINT_SENSOR 0
-#define N_SENSORS 1
+#define N_SENSORS 3
 
 #define BT_BAUDRATE 38400
 #define CONNECTION_PIN 4
@@ -110,7 +110,7 @@ void setup() {
   Wire.begin();
 
   for (int i = 0; i < N_SENSORS; i++) {
-    Serial.println("Sensor :" + String(i));
+    //Serial.println("Sensor :" + String(i));
     isms.emplace_back(new IndividualSensorManager(i));
     madgwick_filters[i].begin(rate.get_rate());
     delay(500);
@@ -135,12 +135,12 @@ double dt;
 Comparer<decltype(std::declval<IndividualSensorManager>().read_sensor())> comparer(5);
 
 void loop() {
-<<<<<<< HEAD
+//<<<<<<< HEAD
     
   static unsigned long last_send = 0;
-=======
+//=======
     double dt;
-  static unsigned long last_send = 0;
+//  static unsigned long last_send = 0;
   
   if (
     //digitalRead(CONNECTION_PIN)
@@ -148,7 +148,7 @@ void loop() {
     ) {
 
     rate.sleep();
->>>>>>> main
+///>>>>>>> main
     // const uint8_t bateria = battery_manager->read();
     // Serial.println(String("bateria: ") + bateria);
     auto ble_send = ble_rate.has_passed();
@@ -178,11 +178,11 @@ void loop() {
       rad_a_pitch = atan2(-accel_vector.x, sqrt(accel_vector.y*accel_vector.y + accel_vector.z*accel_vector.z));
       accl_roll = rad_to_deg(rad_a_roll);
       accl_pitch = rad_to_deg(rad_a_pitch);
-<<<<<<< HEAD
-      Serial.println("trasasying");   
-=======
+//<<<<<<< HEAD
+     // Serial.println("trasasying");   
+//=======
 
->>>>>>> main
+//>>>>>>> main
       omega_roll  = convertRawGyro(gyro_vector.x);
       omega_pitch = convertRawGyro(gyro_vector.y);
       omega_yaw   = convertRawGyro(gyro_vector.z);
@@ -191,16 +191,14 @@ void loop() {
       unsigned long cur_mills = micros();
       unsigned long duration = cur_mills - last_mills;
       last_mills = cur_mills;
-<<<<<<< HEAD
-      Serial.println(dt);
-      dt = duration / 1000000.0; // us->s  
+///<<<<<<< HEAD
+      //Serial.println(dt);
+      dt = duration / 1000000.0; // us->s 
+      delay(100);
       }while(dt < 0.1);
       
-=======
-      dt = duration / 1000000.0; // us->s  
-      }while(dt < 0.1);
 
->>>>>>> main
+//>>>>>>> main
       // Gyro data
       gyro_roll  += omega_roll  * dt; // (ms->s) omega x time = degree
       gyro_pitch += omega_pitch * dt;
@@ -211,11 +209,11 @@ void loop() {
       //comp_pitch[i] = 0.93 * (comp_pitch[i] + omega_pitch[i] * dt) + 0.07 * accl_pitch[i]; 
     
       // Madgwick filter data
-<<<<<<< HEAD
+//<<<<<<< HEAD
       madgwick.updateIMU2(omega_roll, omega_pitch, omega_yaw, accel_vector.x, accel_vector.y, accel_vector.z,dt);
-=======
-      madgwick.updateIMU2(omega_roll, omega_pitch, omega_yaw, accel_vector.x, accel_vector.y, accel_vector.z, dt);
->>>>>>> main
+//=======
+     // madgwick.updateIMU2(omega_roll, omega_pitch, omega_yaw, accel_vector.x, accel_vector.y, accel_vector.z, dt);
+//>>>>>>> main
       //madgwick.updateIMU(omega_roll, omega_pitch, omega_yaw, accX, accY, accZ);
        madw_roll  = madgwick.getRoll();
        madw_pitch = madgwick.getPitch();
@@ -274,9 +272,9 @@ void loop() {
       SerialBT.println(json);
       Serial.println(json);
       #endif
-      delay(100);
+      //delay(100);
       //Serial.println("Mi trama mide: " + String(sizeof(sending_data)));
       //last_send = millis();
-   // }
+   }
 
 }

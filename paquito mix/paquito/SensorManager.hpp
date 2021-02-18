@@ -49,9 +49,9 @@ class IndividualSensorManager {
       // bmi.setAccelerometerRange(0X05);
       bmi.autoCalibrateGyroOffset();
       //Test 1 callibrate ...
-      bmi.autoCalibrateAccelerometerOffset(X_AXIS, 1);
-      bmi.autoCalibrateAccelerometerOffset(Y_AXIS, 0);
-      bmi.autoCalibrateAccelerometerOffset(Z_AXIS, 0);
+      bmi.autoCalibrateAccelerometerOffset(X_AXIS, 1);//1
+      bmi.autoCalibrateAccelerometerOffset(Y_AXIS, 0);//0
+      bmi.autoCalibrateAccelerometerOffset(Z_AXIS, 0);//0
     }
     //std::tie
     std::tuple<Vector3<int>, Vector3<int>> read_sensor() {
