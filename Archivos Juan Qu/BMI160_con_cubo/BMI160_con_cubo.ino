@@ -58,8 +58,8 @@ void setup() {
 
   BMI160.autoCalibrateGyroOffset();
   //Test 1 callibrate ...
-  BMI160.autoCalibrateAccelerometerOffset(X_AXIS, 1);
-  BMI160.autoCalibrateAccelerometerOffset(Y_AXIS, 0);
+  BMI160.autoCalibrateAccelerometerOffset(X_AXIS, 0);
+  BMI160.autoCalibrateAccelerometerOffset(Y_AXIS, 1);
   BMI160.autoCalibrateAccelerometerOffset(Z_AXIS, 0);
 
   //0x69
@@ -105,7 +105,7 @@ void loop() {
   float madw_roll[6] ;
   float madw_pitch[6];
   float madw_yaw[6];
-  double dt;
+  double dt=0;
   int j=0;
     while(j <= 0){
       int i=0;
@@ -158,6 +158,7 @@ void loop() {
       unsigned long duration = cur_mills - last_mills;
       last_mills = cur_mills;
       dt = duration / 1000000.0; // us->s  
+      delay(10);
       }while(dt < 0.1);
       //if (dt > 0.1) return;
     
@@ -176,7 +177,7 @@ void loop() {
        madw_roll[i]  = madgwick.getRoll();
        madw_pitch[i] = madgwick.getPitch();
        madw_yaw[i]   = madgwick.getYaw();
-    
+    //delay(10);
       /*Serial.print(accl_roll);
       Serial.print(",");
       Serial.print(accl_pitch);
@@ -202,15 +203,18 @@ void loop() {
       Serial.print(" , ");
       Serial.println(madw_yaw);
       */
-      Serial.print(int(madw_roll[i]));
+      messageToSend = String(madw_roll[i]) + "," + String(madw_pitch[i]) + "," + String(madw_yaw[i]);
+      /*Serial.print(madw_roll[i]);
       Serial.print(" , ");
-      Serial.print(int(madw_pitch[i]));
+      Serial.print(madw_pitch[i]);
       Serial.print(" , ");
-      Serial.println(int(madw_yaw[i]));
+      Serial.println(madw_yaw[i]);*/
+      Serial.println(messageToSend);
       
-      delay(100);
+      //delay(100);
       i += 1;
     }
     j += 1;
     }
+    messageToSend ="";
 }
