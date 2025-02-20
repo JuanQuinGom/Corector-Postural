@@ -1,0 +1,22 @@
+on:
+  workflow_dispatch:  # Allows manual triggering from GitHub UI
+
+  push:
+    paths:
+      - BMICubeV2MULTI/Multiplexor.h  # Replace with your file path
+
+jobs:
+  validate-file:
+    runs-on: ubuntu-latest
+    environment: development
+
+    steps: 
+      - name: Generate map via PM action
+        # You may pin to the exact commit or the version.
+        # uses: JuanQuGo/product-map-action@e11422d93a9f689161850adb3efb220a04b12026
+        uses: product-map/product-map-action@v1.0.17
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          expected_files: ("main.cpp", ".github/workflows/main.yml")
+          user_email: 'juanquingom@gmail.com'
+          target_branch: 'main'
