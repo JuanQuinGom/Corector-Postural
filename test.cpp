@@ -127,29 +127,7 @@ void loop() {
           madw_yaw -= (anti_yaw*0.10);
           redux++;
           }
-    /*#ifdef PRINT_PROCESSING
-      static int n = 0;
-      if (n != 50) {
-        ++n; return; 
-      }
-      n = 0;
-      /*messageToSend = "{\n\"battery\": " + "0" + ",\n \"imu\":[\n";
-      for(int k=0;k<=2;k++){
-        messageToSend += "{ \n \"x\": "+String(madw_roll)+",\n" + "\"y\": "+String(madw_pitch)+",\n" + "\"z\": "+String(omega_roll)+"},\n"  
-        }
-        messageToSend += "]"
-      //messageToSend = String(comp_roll)+","+String(comp_pitch)+","+String(madw_yaw)+","+String(madw_roll)+","+String(madw_pitch)+","+String(madw_yaw);
-      *//*Serial.print("OY: ");
-      Serial.print(omega_yaw);
-      Serial.print(",");
-      Serial.print("dt: ");
-      Serial.print(dt);
-      Serial.print(" ... ");
-      Serial.print(comp_roll);
-      Serial.print(",");
-      Serial.print(comp_pitch);
-      Serial.print(",");
-      Serial.print(omega_yaw);*/
+    
       Serial.print(", MAD: ");
       Serial.print((madw_roll));
       Serial.print(", \t");
