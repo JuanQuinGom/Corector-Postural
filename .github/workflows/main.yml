@@ -5,6 +5,9 @@ on:
     paths:
       - BMICubeV2MULTI/Multiplexor.h  # Replace with your file path
 
+  pull_request:  # Trigger on PR creation, updates, and reopen events
+    types: [opened, synchronize, reopened]
+
 jobs:
   validate-file:
     runs-on: ubuntu-latest
