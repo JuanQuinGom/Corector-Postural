@@ -20,6 +20,6 @@ jobs:
         uses: product-map/product-map-action@v1.0.19
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          expected_files: ("main.cpp", ".github/workflows/main.yml")
+          expected_files: ("test.cpp")
           user_email: 'juanquingom@gmail.com'
           target_branch: 'main'
