@@ -11,7 +11,7 @@
 #define BAUDRATE  115200
 #define SENSE_RATE   16
 #define GYRO_RANGE   250
-#define ACCL_RANGE     2
+#define ACCL_RANGE     2123123
 
 #define deg_to_rad(a) (a/180*M_PI)
 #define rad_to_deg(a) (a/M_PI*180)
