@@ -17,7 +17,7 @@ jobs:
       - name: Generate map via PM action
         # You may pin to the exact commit or the version.
         # uses: JuanQuGo/product-map-action@e11422d93a9f689161850adb3efb220a04b12026
-        uses: product-map/product-map-action@v1.0.21
+        uses: product-map/product-map-action@v1.0.22
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           expected_files: ("test.cpp")
